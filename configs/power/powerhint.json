@@ -228,12 +228,6 @@
       "DefaultIndex": 2
     },
     {
-      "Name": "BGUclampMin",
-      "Path": "/dev/cpuctl/background/cpu.uclamp.min",
-      "Values": ["100", "75", "50", "25", "0"],
-      "ResetOnInit": true
-    },
-    {
       "Name": "FGUclampMin",
       "Path": "/dev/cpuctl/foreground/cpu.uclamp.min",
       "Values": ["100", "75", "50", "25", "0"],
