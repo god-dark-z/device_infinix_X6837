@@ -55,7 +55,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Audio
 $(call soong_config_set,android_hardware_audio,run_64bit,true)
-$(call soong_config_set,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
+$(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 PRODUCT_PACKAGES += \
     android.hardware.audio@7.0-impl:64 \
     android.hardware.audio.effect@7.0-impl:64 \
@@ -455,7 +455,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # USB
-$(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)
+$(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_supported,true)
 
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
