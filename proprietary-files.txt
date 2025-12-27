@@ -1,5 +1,9 @@
 ## x6837 package version: X6837-H897ABCDEFQRZAaAb-T-BASE-240929V1624, unless stated otherwise
 
+# AEE
+vendor/lib/libaedv.so
+vendor/lib64/libaedv.so
+
 # APU
 vendor/etc/vintf/manifest/manifest_apuware_apusys.xml
 vendor/etc/vintf/manifest/manifest_apuware_hmp.xml
