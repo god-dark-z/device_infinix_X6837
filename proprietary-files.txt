@@ -26,7 +26,6 @@ vendor/lib/libkaraoke.so
 vendor/lib/libladder.so
 vendor/lib/libTransNS.so
 vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6789.so
-vendor/lib64/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib64/hw/audio.r_submix.mt6789.so
 vendor/lib64/libMtkSpeechEnh.so
 vendor/lib64/lib_iir.so
 vendor/lib64/lib_speech_enh.so
