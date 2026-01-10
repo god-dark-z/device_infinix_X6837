@@ -3,6 +3,8 @@ allow vendor_init proc:file write;
 allow vendor_init proc_watermark_boost_factor:file w_file_perms;
 
 set_prop(vendor_init, vendor_camera_prop)
+set_prop(vendor_init, vendor_mtk_audiohal_prop)
+set_prop(vendor_init, vendor_mtk_audio_prop)
 set_prop(vendor_init, vendor_mtk_camera_prop)
 get_prop(vendor_init, vts_status_prop)
 rw_dir_file(vendor_init, sysfs_leds)
