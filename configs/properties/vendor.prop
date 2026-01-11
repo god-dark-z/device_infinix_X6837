@@ -113,7 +113,6 @@ ro.incremental.enable=yes
 # HWUI
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=60
-ro.hwui.render_ahead=20
 debug.sf.enable_adpf_cpu_hint=true
 
 # HWComposer
@@ -262,11 +261,6 @@ ro.vendor.num_md_protocol=3
 ro.vendor.radio.max.multisim=dsds
 ro.vendor.sim_me_lock_mode=3
 telephony.active_modems.max_count=2
-
-# RKPD
-remote_provisioning.enable_rkpd=true
-remote_provisioning.hostname=remoteprovisioning.googleapis.com
-remote_provisioning.connect_timeout_millis=2000
 
 # Sensor
 ro.vendor.init.sensor.rc=init.sensor_2_0.rc
