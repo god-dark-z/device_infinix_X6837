@@ -489,6 +489,9 @@ PRODUCT_PACKAGES += \
     libunwindstack.vendor \
     libutilscallstack.vendor
 
+# Userdata
+PRODUCT_FS_COMPRESSION := 1
+
 # vndservice
 PRODUCT_PACKAGES += \
     vndservicemanager \
