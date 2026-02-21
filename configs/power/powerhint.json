@@ -478,6 +478,12 @@
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "CPUEfficiencyClusterMinFreq",
+      "Duration": 1000,
+      "Value": "1900000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "GpuPwrLevel",
       "Duration": 0,
       "Value": "0"
