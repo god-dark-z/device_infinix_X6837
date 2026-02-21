@@ -230,19 +230,34 @@
     {
       "Name": "FGUclampMin",
       "Path": "/dev/cpuctl/foreground/cpu.uclamp.min",
-      "Values": ["100", "75", "50", "25", "0"],
+      "Values": [
+        "0",
+        "10",
+        "30"
+      ],
+      "DefaultIndex": 0,
       "ResetOnInit": true
     },
     {
       "Name": "TAUclampMin",
       "Path": "/dev/cpuctl/top-app/cpu.uclamp.min",
-      "Values": ["100", "75", "50", "25", "0"],
+      "Values": [
+        "0",
+        "30",
+        "100"
+      ],
+      "DefaultIndex": 0,
       "ResetOnInit": true
     },
     {
       "Name": "CAMUClampBoost",
       "Path": "/dev/cpuctl/camera-daemon/cpu.uclamp.min",
-      "Values": ["100", "75", "50", "25", "0"],
+      "Values": [
+        "60",
+        "80",
+        "100"
+      ],
+      "DefaultIndex": 0,
       "ResetOnInit": true
     },
     {
@@ -381,13 +396,13 @@
       "PowerHint": "INTERACTION",
       "Node": "FGUclampMin",
       "Duration": 1000,
-      "Value": "50"
+      "Value": "10"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "TAUclampMin",
       "Duration": 1000,
-      "Value": "50"
+      "Value": "30"
     },
     {
       "PowerHint": "INTERACTION",
@@ -472,6 +487,18 @@
       "Node": "GPUBlockBoost",
       "Duration": 0,
       "Value": "50"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "FGUclampMin",
+      "Duration": 0,
+      "Value": "30"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "TAUclampMin",
+      "Duration": 0,
+      "Value": "30"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",
