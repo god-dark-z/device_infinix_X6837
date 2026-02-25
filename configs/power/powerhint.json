@@ -216,13 +216,6 @@
       "ResetOnInit": true
     },
     {
-      "Name": "GPUBlockBoost",
-      "Path": "/sys/kernel/ged/hal/gpu_boost_level",
-      "Values": ["101", "50", "0", "-1"],
-      "ResetOnInit": true,
-      "DefaultIndex": 2
-    },
-    {
       "Name": "CciFreq",
       "Path": "/sys/kernel/cm_mgr/dbg_cm_mgr",
       "Values": [
@@ -459,12 +452,6 @@
     },
     {
       "PowerHint": "LAUNCH",
-      "Node": "GPUBlockBoost",
-      "Duration": 5000,
-      "Value": "101"
-    },
-    {
-      "PowerHint": "LAUNCH",
       "Node": "GpuPwrLevel",
       "Duration": 1500,
       "Value": "0"
@@ -498,12 +485,6 @@
       "Node": "GpuPwrLevel",
       "Duration": 0,
       "Value": "0"
-    },
-    {
-      "PowerHint": "EXPENSIVE_RENDERING",
-      "Node": "GPUBlockBoost",
-      "Duration": 0,
-      "Value": "50"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
