@@ -43,9 +43,6 @@ on property:init.svc.vendor.charger=running
     start fuelgauged
     start fuelgauged_nvram
 
-    chown system system /dev/graphics/fb0
-    chown system system /dev/dri/card0
-
 on fs
     # mount fstab
     mount_all --early
