@@ -455,9 +455,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
     android.hardware.usb.gadget-service.mediatek
 
-# ViPER4Android
-$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
-    
 # Vendor service manager
 PRODUCT_PACKAGES += \
     vndservicemanager
@@ -472,7 +469,7 @@ PRODUCT_PACKAGES += \
     libprocessgroup_shim \
     libcamera_metadata_shim \
     libstagefright_foundation-v33 \
-    libtinyxml-v34 \
+    libtinyxml2-v34 \
     libutils-v32 \
     libhidlbase-v32 \
     libbinder-v32
