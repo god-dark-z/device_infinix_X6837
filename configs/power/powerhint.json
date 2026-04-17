@@ -258,6 +258,28 @@
       "ResetOnInit": true
     },
     {
+      "Name": "GpuDvfsTimerMargin",
+      "Path": "/sys/kernel/ged/hal/timer_base_dvfs_margin",
+      "Values": [
+        "798",
+        "18743356",
+        "50"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GpuDvfsLoadingStep",
+      "Path": "/sys/kernel/ged/hal/loading_base_dvfs_step",
+      "Values": [
+        "4",
+        "771",
+        "15"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
       "Name": "PowerHALMainState",
       "Path": "vendor.powerhal.state",
       "Values": ["SUSTAINED_PERFORMANCE", ""],
@@ -456,6 +478,18 @@
       "Value": "0"
     },
     {
+      "PowerHint": "LAUNCH",
+      "Node": "GpuDvfsTimerMargin",
+      "Duration": 2000,
+      "Value": "18743356"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "GpuDvfsLoadingStep",
+      "Duration": 2000,
+      "Value": "771"
+    },
+    {
       "PowerHint": "CAMERA_LAUNCH",
       "Node": "CAMUClampBoost",
       "Duration": 1000,
@@ -496,6 +530,24 @@
       "Node": "TAUclampMin",
       "Duration": 0,
       "Value": "30"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "GpuDvfsTimerMargin",
+      "Duration": 0,
+      "Value": "50"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "GpuDvfsLoadingStep",
+      "Duration": 0,
+      "Value": "15"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "MemFreq",
+      "Duration": 4000,
+      "Value": "4266000000"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",
