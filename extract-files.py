@@ -33,9 +33,9 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/bin/hw/android.hardware.gnss-service.mediatek', 'vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so'): blob_fixup()
         .replace_needed('android.hardware.gnss-V1-ndk_platform.so', 'android.hardware.gnss-V1-ndk.so'),
     ('vendor/lib64/hw/mt6789/vendor.mediatek.hardware.pq@2.15-impl.so', 'vendor/bin/hw/vendor.mediatek.hardware.pq@2.2-service'): blob_fixup()
-        .replace_needed('libhidlbase.so', 'libhidlbase-v32.so')
-        .replace_needed('libbinder.so', 'libbinder-v32.so')
-        .replace_needed('libutils.so', 'libutils-v32.so')
+        .replace_needed('libhidlbase.so', 'libhidlbase-v31.so')
+        .replace_needed('libbinder.so', 'libbinder-v31.so')
+        .replace_needed('libutils.so', 'libutils-v31.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so'),
     ('vendor/bin/mnld', 'vendor/lib64/mt6789/libaalservice.so', 'vendor/lib64/mt6789/libcam.utils.sensorprovider.so'): blob_fixup()
@@ -90,9 +90,9 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
-        .add_needed('libutils-v32.so'),
+        .add_needed('libutils-v31.so'),
     'vendor/lib64/mt6789/libmorpho_video_stabilizer.so': blob_fixup()
-        .add_needed('libutils-v32.so'),
+        .add_needed('libutils-v31.so'),
     ('vendor/lib64/hw/mt6789/vendor.mediatek.hardware.camera.isphal@1.0-impl.so', 'vendor/lib64/hw/mt6789/vendor.mediatek.hardware.camera.isphal@1.1-impl.so'): blob_fixup()
         .replace_needed('libhidlbase.so', 'libhidlbase-v31.so')
         .replace_needed('libbinder.so', 'libbinder-v31.so')
