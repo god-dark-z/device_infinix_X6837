@@ -23,7 +23,6 @@ namespace_imports = [
     'device/infinix/X6837',
     'hardware/mediatek',
     'hardware/mediatek/libmtkperf_client',
-    'hardware/transsion',
 ]
 
 lib_fixups: lib_fixups_user_type = {
