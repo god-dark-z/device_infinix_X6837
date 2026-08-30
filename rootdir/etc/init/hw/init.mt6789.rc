@@ -808,7 +808,9 @@ on property:vendor.mtk.md1.status=reset
     setprop persist.vendor.atm.mdmode normal
 
 on property:sys.boot_completed=1
-    restart android-hardware-media-c2-hal-1-2
+    # Service name comes from hardware/mediatek aidl/codec2; it is
+    # "android-hardware-media-c2-hal", not the old HIDL "-1-2" suffixed name.
+    restart android-hardware-media-c2-hal
 
 on property:sys.boot_completed=1
 # Setup cpu.shares to throttle background groups (bg ~ 5% sysbg ~ 10%)
