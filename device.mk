@@ -5,7 +5,17 @@
 #
 
 # API levels
+# Keep this at 31. VSR_VENDOR_API_LEVEL is derived from it and gates
+# TARGET_MAX_PAGE_SIZE_SUPPORTED (16K at >= 34), TARGET_RESTRICTS_ASHMEM_USAGE
+# (>= 202604), CHECK_VENDOR_SEAPP_VIOLATIONS (> 34) and
+# CHECK_DEV_TYPE_VIOLATIONS (> 202404). MT6789 blobs are 4K-page and are not
+# labeled for those checks.
 PRODUCT_SHIPPING_API_LEVEL := 31
+
+# Android 17 (vFRC 202604) turns on Treble SELinux labeling enforcement by
+# default. MediaTek/Transsion vendor blobs are not labeled to that standard, so
+# downgrade the check to warnings until sepolicy/vendor has been fully audited.
+PRODUCT_ENFORCE_SELINUX_TREBLE_LABELING := false
 
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -160,13 +170,23 @@ PRODUCT_PACKAGES += \
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# ION
+# libion on lineage-24.0 selects its implementation through a soong config
+# variable. MT6789 needs the legacy ION ABI.
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # Enforce generic ramdisk allow list
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
 # FastbootD
+# fastbootd itself comes from vendor/lineage/config/common.mk on lineage-24.0.
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock \
-    fastbootd
+    android.hardware.fastboot@1.1-impl-mock
+
+# Bypass Lock State for Fenrir
+# Consumed by the -DFASTBOOT_BYPASS_LOCK_STATE hunk that vendorsetup.sh applies
+# to system/core/fastboot.
+$(call soong_config_set_bool,fastbootd,bypass_lock_state,true)
 
 # Fingerprint
 PRODUCT_PACKAGES += \
