@@ -157,6 +157,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # SEPolicy
+include device/lineage/sepolicy/libion/sepolicy.mk
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
@@ -193,12 +194,16 @@ BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 3
 
 # VNDK
-BOARD_VNDK_VERSION := current
+# BOARD_VNDK_VERSION is unconditionally cleared by build/make/core/config.mk on
+# Android 16+, so it is intentionally not set here. Vendor blobs that need the
+# old VNDK ABI are served by the versioned prebuilts in vndk/ and by
+# hardware/lineage/compat.
 
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
 	$(CONFIGS_PATH)/vintf/framework_compatibility_matrix.xml \
-	hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml
+	hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml \
+	hardware/mediatek/vintf/mediatek_framework_compatibility_matrix_aidl.xml
 DEVICE_MANIFEST_FILE := $(CONFIGS_PATH)/vintf/manifest.xml
 DEVICE_MATRIX_FILE := $(CONFIGS_PATH)/vintf/compatibility_matrix.xml
 
