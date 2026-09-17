@@ -1,15 +1,15 @@
 ## All proprietary files from this list, unless pinned and noted otherwise, are
 ## from X6837-H897ABCDEFQRZAaAb-T-BASE-240929V1624
 
-dpm.img;AB
-gz.img;AB
-lk.img;AB
-logo.bin:logo.img;AB
-mcupm.img;AB
-md1img.img;AB
-pi_img.img;AB
-scp.img;AB
-spmfw.img;AB
-sspm.img;AB
-tee.img;AB
-tkv.img;AB
+dpm.img;AB|3d96e838ae076450ee6dc26d4bf3d8b88dc22bb4
+gz.img;AB|50bcb4cf4466ce9a501d13c8bdede2620b995b0f
+lk.img;AB|78dd701e5c3dbd06357d01b2596ce83a28f4d27c
+logo.bin:logo.img;AB|a448ca280ecff44130515fbe93fb38cce0fbd1bb
+mcupm.img;AB|be062ba5b6952c11e73093dd7b6cd55062892cb8
+md1img.img;AB|0c595b8999e38d69f6e1ec8a93a8c569ea0dba39
+pi_img.img;AB|d49bfeade6d8b7d709b22215528d2cbdf93a729b
+scp.img;AB|503a0b4924780a65a44a62b622ebb71405b1aa73
+spmfw.img;AB|df19212edd4c9f96391dda247601a92df0a37db6
+sspm.img;AB|66cf40d3d65ef7b23b29f460e945a65d720ce5fa
+tee.img;AB|30505a4540fa5002766034563e8f11a84ffd7771
+tkv.img;AB|2f3600a53b076e51e023e180f358b198e285fceb

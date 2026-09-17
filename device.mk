@@ -14,6 +14,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.m
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
+    dtbo \
     odm_dlkm \
     product \
     system \
@@ -108,6 +109,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-service.mediatek
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2460
+TARGET_SCREEN_WIDTH := 1080
+
 PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.bluetooth.audio@2.1.vendor:64 \
     vendor.mediatek.hardware.bluetooth.audio@2.2.vendor:64
@@ -153,6 +158,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ANGLE
 
+# Dolby
+$(call inherit-product, vendor/sony/dolby/setup.mk)
+
 # DRM
 PRODUCT_PACKAGES += \
     com.android.hardware.drm.clearkey
@@ -167,6 +175,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
     fastbootd
+<<<<<<< Updated upstream
+=======
+       
+# Bypass Lock State for Fenrir
+$(call soong_config_set_bool,fastbootd,bypass_lock_state,true)
+>>>>>>> Stashed changes
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -221,7 +235,6 @@ PRODUCT_PACKAGES += \
     init.modem.rc \
     init.mt6789.power.rc \
     init.mt6789.rc \
-    init.mt6789.usb.rc \
     init.mtkgki.rc \
     init.project.rc \
     init.recovery.usb.rc \
@@ -313,6 +326,7 @@ PRODUCT_PACKAGES += \
     SettingsResTarget \
     SettingsProviderResTarget \
     SystemUIResTarget \
+    TelephonyResTarget \
     TetheringConfigTarget \
     OpenDeltaOverlayMT6789 \
     WifiResTarget
@@ -437,8 +451,9 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client \
+    hardware/mediatek/libaedv \
     hardware/google/interfaces \
-    hardware/google/pixel
+    hardware/google/pixel \
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -452,11 +467,8 @@ $(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_suppo
 
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
-    android.hardware.usb.gadget-service.mediatek
-
-# Vendor service manager
-PRODUCT_PACKAGES += \
-    vndservicemanager
+    android.hardware.usb.gadget-service.mediatek \
+    init.mt6789.usb.rc
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -486,11 +498,11 @@ PRODUCT_PACKAGES += \
     vndservice
     
 # Wi-Fi
+$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
 PRODUCT_PACKAGES += \
     libwifi-hal-wrapper \
     android.hardware.wifi-service \
     wpa_supplicant \
-    lib_driver_cmd_mt66xx \
     hostapd \
     libkeystore-wifi-hidl:64 \
     libkeystore-engine-wifi-hidl:64

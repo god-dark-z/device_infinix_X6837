@@ -1,0 +1,2 @@
+# Allow update_engine to access the Transsion tee block device during OTA verification.
+allow update_engine tranfs_block_device:blk_file { read write open ioctl };

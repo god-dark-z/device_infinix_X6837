@@ -14,30 +14,97 @@ bluetooth.profile.pan.panu.enabled=true
 bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.sap.server.enabled=true
 
+# Audio
+persist.vendor.anr.dumpthr=1
+ro.audio.silent=0
+ro.audio.usb.period_us=16000
+ro.camera.sound.forced=0
+ro.config.alarm_vol_default=13
+ro.config.media_vol_default=13
+ro.config.system_vol_default=15
+ro.config.vc_call_vol_steps=9
+
 # Blur
-ro.launcher.blur.appLaunch=0
 ro.sf.blurs_are_expensive=1
 ro.surface_flinger.supports_background_blur=1
 
-# Logging
-log.tag=I
+# Camera
+vendor.camera.tran.nums=1
+
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+pm.dexopt.install=speed-profile
+pm.dexopt.bg-dexopt=speed-profile
+pm.dexopt.boot=verify
+pm.dexopt.first-boot=verify
+pm.dexopt.ab-ota=speed-profile
+dalvik.vm.dex2oat-cpu-set=0,1,2,3,4,5
+dalvik.vm.dex2oat-threads=6
+dalvik.vm.boot-dex2oat-cpu-set=0,1,2,3,4,5
+dalvik.vm.boot-dex2oat-threads=6
+dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5
+dalvik.vm.image-dex2oat-threads=6
+
+# Graphics
+ro.opengles.version=196610
+
+# IMS
+persist.dbg.volte_avail_ovr=1
+persist.dbg.ims_volte_enable=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+
+# IPO
+sys.ipo.disable=1
+sys.ipo.pwrdncap=2
+
+# Low Memory Killer
+ro.config.per_app_memcg=false
 
 # Media
-debug.stagefright.c2inputsurface=-1
 media.stagefright.thumbnail.prefer_hw_codecs=true
 vendor.mtk_thumbnail_optimization=true
 
-# Mediatek
-ro.vendor.mtk_cta_set=1
-ro.vendor.mtk_flv_playback_support=1
+# MTK vendor
+ro.vendor.mtk_omacp_support=1
 ro.vendor.mtk_telephony_add_on_policy=0
+
+# Performance
+security.perf_harden=1
+
+# Radio
+persist.sys.radio.force_lte_ca=true
+
+# SLA
+ro.vendor.net.enable_sla=1
+
+# Thermal Management
+persist.thermal_config.mitigation=1
+ro.mtk_thermal_monitor.enabled=true
+
+# Thermal Configuration
+ro.config.thermal_dcs=40
+ro.config.thermal_limit=75
+
+# USB
+ro.sys.usb.bicr=no
+ro.sys.usb.charging.only=yes
+ro.sys.usb.mtp.whql.enable=0
+ro.sys.usb.storage.type=mtp
+ro.usb.connect.keycodes=100,200
+
+# Wi-Fi
+mediatek.wlan.ctia=0
+persist.vendor.wfc.sys_wfc_support=1
+ro.mediatek.wlan.p2p=1
+ro.mediatek.wlan.wsc=1
+wifi.direct.interface=p2p0
+wifi.interface=wlan0
+wifi.tethering.interface=ap0
+
+# Zygote
+zygote.critical_window.minute=10
 
 # Netflix
 ro.netflix.channel=004ee050-1a17-11e9-bb61-6f1da27fb55b
 ro.netflix.signup=1
-
-# Override Animation
-persist.sys.activity_anim_perf_override=true
-
-# Storage
-persist.sys.fuse.passthrough.enable=true

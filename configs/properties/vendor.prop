@@ -14,6 +14,7 @@ ro.vendor.mtk_audio_alac_support=1
 ro.vendor.mtk_audio_ape_support=1
 ro.vendor.mtk_audio_tuning_tool_ver=V1
 ro.vendor.mtk_hifiaudio_support=1
+ro.config.vc_call_vol_steps=11
 
 # Bluetooth
 bluetooth.profile.sap.server.enabled=true
@@ -233,11 +234,11 @@ persist.vendor.ims_support=1
 persist.vendor.md_c2k_cap_dep_check=0
 persist.vendor.mdrsra_v2_support=1
 persist.vendor.mims_support=2
-persist.vendor.mtk.volte.enable=1
+persist.vendor.vonr_setting_support=1
 persist.vendor.mtk_ct_volte_support=3
 persist.vendor.mtk_dynamic_ims_switch=1
 persist.vendor.mtk_sim_switch_policy=2
-persist.vendor.mtk_wfc_support=1
+persist.vendor.vilte_support=1
 persist.vendor.radio.fd.counter=150
 persist.vendor.radio.fd.off.counter=50
 persist.vendor.radio.fd.off.r8.counter=50
@@ -250,6 +251,9 @@ persist.vendor.radio.smart.data.switch=1
 persist.vendor.vilte_support=1
 persist.vendor.viwifi_support=1
 persist.vendor.volte_support=1
+persist.vendor.mtk.volte.enable=1
+persist.vendor.mtk.ims.enable=1
+ro.vendor.mtk_ims=1
 persist.vendor.vonr_setting_support=1
 persist.vendor.xfrm_support=1
 ro.telephony.default_network=9,9,9,9
@@ -309,6 +313,7 @@ ro.surface_flinger.use_content_detection_for_refresh_rate=true
 ro.surface_flinger.vsync_event_phase_offset_ns=8400000
 ro.surface_flinger.vsync_sf_event_phase_offset_ns=-10933333
 ro.surface_flinger.wcg_composition_dataspace=143261696
+ro.surface_flinger.game_default_frame_rate_override=120
 
 # SoC
 ro.soc.manufacturer=Mediatek
@@ -317,6 +322,9 @@ ro.soc.model=MT6789V/CD
 # TEE
 ro.vendor.mtk_tee_gp_support=1
 ro.vendor.mtk_trustonic_tee_support=1
+
+# USB
+vendor.usb.controller=musb-hdrc
 
 # Thermal
 ro.vendor.mtk_thermal_2_0=1
