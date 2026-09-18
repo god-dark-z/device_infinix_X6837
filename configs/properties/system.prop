@@ -53,6 +53,7 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.ims_volte_enable=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
+persist.sys.cust.lte_config=1
 
 # IPO
 sys.ipo.disable=1

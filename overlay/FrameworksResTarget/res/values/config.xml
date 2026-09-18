@@ -34,11 +34,23 @@
     <!-- Flag specifying whether VoLTE TTY is supported -->
     <bool name="config_carrier_volte_tty_supported">true</bool>
 
+    <!-- Flag specifying whether Video Telephony is available over VoLTE -->
+    <bool name="config_carrier_volte_vt_available">true</bool>
+
     <!-- Flag specifying whether VT is available on device -->
     <bool name="config_device_vt_available">true</bool>
 
-    <!-- Package name providing IMS implementation -->
+    <!-- Flag specifying whether VT should be available for carrier -->
+    <bool name="config_carrier_vt_available">true</bool>
+
+    <!-- Package name providing legacy IMS implementation -->
     <string name="config_ims_package" translatable="false">com.mediatek.ims</string>
+
+    <!-- Package name providing MMTel IMS implementation -->
+    <string name="config_ims_mmtel_package" translatable="false">com.mediatek.ims</string>
+
+    <!-- Package name providing RCS IMS implementation -->
+    <string name="config_ims_rcs_package" translatable="false">com.mediatek.ims</string>
 
     <!-- Flag specifying whether dynamic binding to IMS is allowed -->
     <bool name="config_dynamic_bind_ims">true</bool>

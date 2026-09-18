@@ -14,6 +14,10 @@ on post-fs-data
     chmod 0660 /dev/ttyMT1
     chown system system /dev/ttyMT1
 
+# NFC
+    mkdir /data/vendor/nfc 0770 nfc nfc
+    mkdir /data/vendor/nfc/param 0770 nfc nfc
+
 # GPS
     mkdir /data/vendor/gps 0770 gps system
     mkdir /data/vendor/log 0770 gps system
@@ -21,6 +25,11 @@ on post-fs-data
 
 # GPS EMI
     chmod 0660 /dev/gps_emi
+
+# NFC
+    mkdir /data/vendor/nfc 0770 nfc nfc
+    chmod 0660 /dev/pn553
+    chown nfc nfc /dev/pn553
 
 # WiFi
     mkdir /data/vendor/wifi 0770 wifi wifi
