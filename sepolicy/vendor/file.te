@@ -20,6 +20,11 @@ type vendor_gf_data_file, file_type, data_file_type;
 type vendor_sysfs_mmc_device_type, fs_type, sysfs_type;
 
 # NFC
+<<<<<<< HEAD
+=======
+type nfc_vendor_data_file, file_type, data_file_type;
+typealias nfc_vendor_data_file alias nfc_data_vendor_file;
+>>>>>>> 382b8f3dbe861d803baa4b20704a97310f6db41c
 
 # Gesture
 type proc_gesture_function, fs_type, proc_type, sysfs_type;
