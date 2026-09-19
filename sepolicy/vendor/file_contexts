@@ -21,7 +21,7 @@
 
 # Fingerprint
 /(system\/vendor|vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service         u:object_r:hal_fingerprint_default_exec:s0
-/dev/fpsensor                                                                                 u:object_r:fpsensor_fp_device:s0
+/dev/fpsensor                                                                                   u:object_r:fpsensor_fp_device:s0
 /sys/kernel/tran_fp(/.*)?                                                                       u:object_r:sysfs_fp_name_path:s0
 /data/vendor/goodix/gf_data(/.*)?                                                               u:object_r:vendor_gf_data_file:s0
 
@@ -38,6 +38,8 @@
 /dev/pn54x                                                                                  u:object_r:nfc_device:s0
 /dev/pn553                                                                                  u:object_r:nfc_device:s0
 /dev/nxpnfc                                                                                 u:object_r:nfc_device:s0
+/data/vendor/nfc(/.*)?                                                                      u:object_r:nfc_vendor_data_file:s0
+/(vendor|system/vendor)/lib(64)?/libpn557_fw\.so                                            u:object_r:nfc_vendor_data_file:s0
 
 # Power
 /vendor/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr                      u:object_r:hal_power_default_exec:s0
@@ -55,50 +57,21 @@
 /data/vendor/meg_working_dir(/.*)?                                                                 u:object_r:transsion_camera_meghdr_file:s0
 
 # Tranfs
-/dev/block/sdc62                                                                       
-                                                                                              u:object_r:tranfs_device:s0
-/dev/block/sdd                                                                                 u:object_r:tranfs_device:s0
-/dev/block/sde                                                                                 u:object_r:tranfs_device:s0
+/dev/block/sdc62                                                                        u:object_r:tranfs_block_device:s0
 
-# Touch
-/dev/input/event0                                                                              u:object_r:touch_device:s0
-/dev/input/event1                                                                              u:object_r:touch_device:s0
-/dev/input/event2                                                                              u:object_r:touch_device:s0
-/dev/input/event3                                                                              u:object_r:touch_device:s0
-/dev/input/event4                                                                              u:object_r:touch_device:s0
-/dev/input/event5                                                                              u:object_r:touch_device:s0
-/dev/input/event6                                                                              u:object_r:touch_device:s0
-/dev/input/event7                                                                              u:object_r:touch_device:s0
-/dev/input/mice                                                                                u:object_r:mouse_device:s0
-/dev/input/mouse0                                                                              u:object_r:mouse_device:s0
-/dev/socket/ts (/.*)?                                                                          u:object_r:tran_socket:s0
+# Trustonic
+/(vendor|system/vendor)/bin/kmsetkey_ca.trustonic                                                  u:object_r:trustonic_kmsetkey_ca_exec:s0
 
-# UFS
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda1/uevent              u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda10/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda11/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda12/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda13/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda14/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda15/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda16/uevent            u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda2/uevent               u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda5/uevent               u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda6/uevent               u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda7/uevent               u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda8/uevent               u:object_r:sysfs_scsi_target:s0
-/sys/devices/platform/soc/1da40000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda9/uevent               u:object_r:sysfs_scsi_target:s0
+# USB OTG
+/sys/devices/platform/odm/odm:tran_battery/OTG_CTL                                     u:object_r:sysfs_OTG_CTL_file:s0
 
 # Vibrator
-/sys/devices/platform/soc/10001000.pwrap/10001000.pwrap:mt6370_pmu/10001000.pwrap:mt6370_pmu:mt6370-regulator/motor(/.*)?         u:object_r:vibrator_sysfs:s0
-/sys/devices/platform/soc/10001000.pwrap/10001000.pwrap:mt6370_pmu/10001000.pwrap:mt6370_pmu:mt6370-regulator/motor/active         u:object_r:vibrator_sysfs:s0
-/sys/devices/platform/soc/10001000.pwrap/10001000.pwrap:mt6370_pmu/10001000.pwrap:mt6370_pmu:mt6370-regulator/motor/vibrator_amp   u:object_r:vibrator_sysfs:s0
-/dev/ist8310                                                                             u:object_r:ist8310_device:s0
-
-# Wlan
-/dev/wmtWifi                                                                             u:object_r:wmtWifi_device:s0
-/dev/wmtLdc                                                                              u:object_r:wmtWifi_device:s0
-/dev/wmtASCI                                                                             u:object_r:wmtWifi_device:s0
-/dev/wmtFM                                                                               u:object_r:wmtWifi_device:s0
-/dev/wmtGPS                                                                              u:object_r:wmtWifi_device:s0
-/dev/wmtBT                                                                               u:object_r:wmtWifi_device:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.transsion           u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system\/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service              u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system\/vendor)/bin/hw/android\.hardware\.vibrator-service.example           u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system\/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service-mediatek            u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system\/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service-mediatek-lazy       u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system\/vendor)/bin/hw/android\.hardware\.vibrator-service\.example                 u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system\/vendor)/bin/hw/android\.hardware\.vibrator-service\.mediatek                u:object_r:hal_vibrator_default_exec:s0
+/sys/devices/platform/soc/1101a000.i2c/i2c-6/6-0034/leds/vibrator_single(/.*)?               u:object_r:sysfs_vibrator:s0
+/sys/devices/platform/soc/1101a000.i2c/i2c-6/6-005a/leds/vibrator_single(/.*)?               u:object_r:sysfs_vibrator:s0
