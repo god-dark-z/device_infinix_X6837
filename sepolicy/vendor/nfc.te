@@ -2,5 +2,5 @@
 allow nfc nfc_data_file:dir create_dir_perms;
 allow nfc nxpnfc_hwservice:hwservice_manager find;
 allow nfc nfc_device:chr_file rw_file_perms;
-allow nfc nfc_vendor_data_file:dir create_dir_perms;
-allow nfc nfc_vendor_data_file:file create_file_perms;
+allow nfc nfc_data_vendor_file:dir create_dir_perms;
+allow nfc nfc_data_vendor_file:file create_file_perms;
