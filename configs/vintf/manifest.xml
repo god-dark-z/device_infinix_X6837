@@ -1,3 +1,14 @@
+<!--
+    target-level is the FCM version the *vendor image* conforms to, NOT the
+    Android version being built. Android's FCM ladder is:
+        6 = Android 12/S, 7 = Android 13/T, 8 = Android 14/U,
+        202404 = Android 15/V, 202504 = Android 16/B, 202604 = Android 17.
+    This device shipped with Android 13, so the value is 7 and must stay 7 for
+    any Android 16/17 build. Raising it to 8+ (or to 202604/202704) makes VINTF
+    demand HAL versions the MT6789 vendor blobs never implement and the device
+    will fail compatibility at runtime. Only lower it if the vendor image is
+    ever replaced by an older one.
+-->
 <manifest version="4.0" type="device" target-level="7">
     <hal format="hidl">
         <name>android.hardware.audio</name>

@@ -6,10 +6,8 @@
 
 # API levels
 # Keep this at 31. VSR_VENDOR_API_LEVEL is derived from it and gates
-# TARGET_MAX_PAGE_SIZE_SUPPORTED (16K at >= 34), TARGET_RESTRICTS_ASHMEM_USAGE
-# (>= 202604), CHECK_VENDOR_SEAPP_VIOLATIONS (> 34) and
-# CHECK_DEV_TYPE_VIOLATIONS (> 202404). MT6789 blobs are 4K-page and are not
-# labeled for those checks.
+# CHECK_VENDOR_SEAPP_VIOLATIONS (> 34) and CHECK_DEV_TYPE_VIOLATIONS (> 202404).
+# MT6789 blobs are 4K-page and are not labeled for those checks.
 PRODUCT_SHIPPING_API_LEVEL := 31
 
 # Android 17 (vFRC 202604) turns on Treble SELinux labeling enforcement by
