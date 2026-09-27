@@ -232,3 +232,8 @@ TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
 
 # Inherit the proprietary files
 include vendor/infinix/X6837/BoardConfigVendor.mk
+
+#usb.rc default usage
+SOONG_CONFIG_NAMESPACES += mtk
+SOONG_CONFIG_mtk += use_custom_usb_gadget_rc
+SOONG_CONFIG_mtk_use_custom_usb_gadget_rc := true
