@@ -234,6 +234,6 @@ TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
 include vendor/infinix/X6837/BoardConfigVendor.mk
 
 #usb.rc default usage
-SOONG_CONFIG_NAMESPACES += mtk
-SOONG_CONFIG_mtk += use_custom_usb_gadget_rc
-SOONG_CONFIG_mtk_use_custom_usb_gadget_rc := true
+SOONG_CONFIG_NAMESPACES += mediatek_gadget
+SOONG_CONFIG_mediatek_gadget += use_custom_usb_gadget_rc
+SOONG_CONFIG_mediatek_gadget_use_custom_usb_gadget_rc := true
