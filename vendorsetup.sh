@@ -111,8 +111,23 @@ _fenrir_apply() {
         || ret=1
 
     if [ $ret -ne 0 ]; then
-        echo "ERROR: one or more fenrir patches could not be applied."
-        echo "       Inspect the FAIL lines above and rebase them by hand."
+        # NOTE: this file is *sourced* by build/envsetup.sh, so `exit` would
+        # kill the user's shell and cannot be used here. `return 1` propagates
+        # the failure out of the sourcing instead. The messages below go to
+        # stderr so they cannot be missed in the "including vendorsetup.sh"
+        # output. Do NOT build or ship OTA updates until every patch reports
+        # OK: an unpatched tree will fail AVB verification on fenrir-patched
+        # LKs and OTA-written slots will not boot (update_verifier then marks
+        # the update as failed).
+        {
+            echo ""
+            echo "ERROR: one or more fenrir patches could not be applied."
+            echo "       Inspect the FAIL lines above and rebase them by hand."
+            echo "       Building without these patches WILL break boot/OTA"
+            echo "       verification on fenrir-patched bootloaders."
+            echo ""
+        } >&2
+        return 1
     else
         echo "OK: fenrir patches in place"
     fi
