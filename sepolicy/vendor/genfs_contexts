@@ -15,7 +15,6 @@ genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:2/block
 genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:2/block/sdc/queue         u:object_r:sysfs_devices_block:s0
 
 # Extcon
-genfscon sysfs /devices/platform/extcon_usb                                                        u:object_r:sysfs_extcon:s0
 genfscon sysfs /devices/platform/extcon_usb1                                                       u:object_r:sysfs_extcon:s0
 
 # Gesture

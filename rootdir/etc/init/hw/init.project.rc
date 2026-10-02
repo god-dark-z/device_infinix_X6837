@@ -7,6 +7,12 @@ on init
     chown system system /proc/gesture_function
     chmod 0660 /proc/gesture_function
 
+    # Allow the touch/game service to control the touchscreen game state.
+    # This matches the Transsion device-tree integration used by other
+    # MT6789 devices and keeps the change out of the shared kernel.
+    chown system system /proc/game_state
+    chmod 0660 /proc/game_state
+
     # OTG
     write /sys/devices/platform/odm/odm:tran_battery/OTG_CTL 1
 

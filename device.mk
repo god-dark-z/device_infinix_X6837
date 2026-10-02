@@ -6,10 +6,9 @@
 
 # API levels
 # Keep this at 31. VSR_VENDOR_API_LEVEL is derived from it and gates
-# TARGET_MAX_PAGE_SIZE_SUPPORTED (16K at >= 34), TARGET_RESTRICTS_ASHMEM_USAGE
-# (>= 202604), CHECK_VENDOR_SEAPP_VIOLATIONS (> 34) and
-# CHECK_DEV_TYPE_VIOLATIONS (> 202404). MT6789 blobs are 4K-page and are not
-# labeled for those checks.
+# CHECK_VENDOR_SEAPP_VIOLATIONS (> 34) and CHECK_DEV_TYPE_VIOLATIONS (> 202404).
+# MT6789 blobs are 4K-page and are not labeled for those checks.
+BOARD_SHIPPING_API_LEVEL := 31
 PRODUCT_SHIPPING_API_LEVEL := 31
 
 # Android 17 (vFRC 202604) turns on Treble SELinux labeling enforcement by
@@ -24,6 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.m
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
+    dtbo \
     odm_dlkm \
     product \
     system \
@@ -118,6 +118,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-service.mediatek
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2460
+TARGET_SCREEN_WIDTH := 1080
+
 PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.bluetooth.audio@2.1.vendor:64 \
     vendor.mediatek.hardware.bluetooth.audio@2.2.vendor:64
@@ -163,6 +167,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ANGLE
 
+# Dolby
+$(call inherit-product, vendor/sony/dolby/setup.mk)
+
 # DRM
 PRODUCT_PACKAGES += \
     com.android.hardware.drm.clearkey
@@ -179,9 +186,9 @@ $(call soong_config_set_bool,libion,legacy_impl,true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
 # FastbootD
-# fastbootd itself comes from vendor/lineage/config/common.mk on lineage-24.0.
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock
+    android.hardware.fastboot@1.1-impl-mock \
+    fastbootd
 
 # Bypass Lock State for Fenrir
 # Consumed by the -DFASTBOOT_BYPASS_LOCK_STATE hunk that vendorsetup.sh applies
@@ -241,7 +248,6 @@ PRODUCT_PACKAGES += \
     init.modem.rc \
     init.mt6789.power.rc \
     init.mt6789.rc \
-    init.mt6789.usb.rc \
     init.mtkgki.rc \
     init.project.rc \
     init.recovery.usb.rc \
@@ -318,13 +324,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.nxp \
     com.android.nfc_extras \
-    Tag
+    Tag \
+    NfcNci
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-slm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-slm.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/libnfc-nxp_RF.conf
+    $(LOCAL_PATH)/configs/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/libnfc-nxp_RF.conf \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp_RF.conf
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
@@ -333,6 +341,7 @@ PRODUCT_PACKAGES += \
     SettingsResTarget \
     SettingsProviderResTarget \
     SystemUIResTarget \
+    TelephonyResTarget \
     TetheringConfigTarget \
     OpenDeltaOverlayMT6789 \
     WifiResTarget
@@ -352,6 +361,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -363,8 +373,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
+    frameworks/native/data/etc/android.hardware.telephony.mbms.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.mbms.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.xml \
@@ -388,7 +400,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr
+    android.hardware.power-service.lineage-libperfmgr
 
 PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub \
@@ -420,7 +432,13 @@ PRODUCT_COPY_FILES += \
 # Radio
 PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.3.vendor \
-    android.hardware.radio@1.6.vendor
+    android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.radio@1.6.vendor \
+    vendor.mediatek.hardware.mtkradioex@2.0.vendor \
+    vendor.mediatek.hardware.mtkradioex@3.0.vendor \
+    vendor.mediatek.hardware.videotelephony@1.0.vendor \
+    vendor.mediatek.hardware.clientapi@1.0.vendor \
+    vendor.mediatek.hardware.rcs@2.0.vendor
 
 # Secure Element
 PRODUCT_PACKAGES += \
@@ -457,8 +475,12 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client \
+    hardware/mediatek/libaedv \
+    hardware/nxp/nfc \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/google/interfaces \
-    hardware/google/pixel
+    hardware/google/pixel/pixelstats \
+    hardware/google/pixel/power-libperfmgr \
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -472,11 +494,8 @@ $(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_suppo
 
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
-    android.hardware.usb.gadget-service.mediatek
-
-# Vendor service manager
-PRODUCT_PACKAGES += \
-    vndservicemanager
+    android.hardware.usb.gadget-service.mediatek \
+    init.mt6789.usb.rc
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -506,11 +525,11 @@ PRODUCT_PACKAGES += \
     vndservice
     
 # Wi-Fi
+$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
 PRODUCT_PACKAGES += \
     libwifi-hal-wrapper \
     android.hardware.wifi-service \
     wpa_supplicant \
-    lib_driver_cmd_mt66xx \
     hostapd \
     libkeystore-wifi-hidl:64 \
     libkeystore-engine-wifi-hidl:64

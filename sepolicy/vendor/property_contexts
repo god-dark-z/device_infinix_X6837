@@ -23,8 +23,8 @@ demo.                                       u:object_r:exported_default_prop:s0
 # Display
 ro.vendor.mtk_hdr_video_support             u:object_r:vendor_mtk_default_prop:s0
 
-# Dynamic sensor
-vendor.dynamic_sensor.                          u:object_r:vendor_dynamic_sensor_prop:s0
+# NFC
+persist.vendor.nfc.                             u:object_r:vendor_nfc_prop:s0
 
 # Fingerprint
 persist.vendor.goodix.dump_data             u:object_r:vendor_fingerprint_prop:s0
@@ -40,11 +40,5 @@ persist.vendor.sys.fp.fod.size.width_height    u:object_r:vendor_fingerprint_pro
 # Key manager
 ro.mtk_key_manager_support                  u:object_r:vendor_mtk_default_prop:s0
 
-# NFC properties
-persist.vendor.nfc.            u:object_r:vendor_nfc_prop:s0
-
 # TEE property
 vendor.tee.googlekey.status                          u:object_r:vendor_mtk_trustonic_tee_prop:s0
-
-# VT
-ro.vendor.vt.                               u:object_r:vendor_mtk_vendor_vt_prop:s0
