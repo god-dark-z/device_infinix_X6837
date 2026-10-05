@@ -3,3 +3,8 @@ vendor_public_prop(vendor_audioserver_prop)
 
 # NFC
 vendor_internal_prop(vendor_nfc_prop)
+
+# Camera (persist.vendor.camera.*)
+vendor_internal_prop(vendor_persist_camera_prop)
+# Note: vendor_camera_prop and vendor_fingerprint_prop are defined by AOSP,
+# do not redefine them here
