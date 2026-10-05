@@ -16,7 +16,7 @@ on init
     write /dev/blkio/blkio.group_idle 2000
     write /dev/blkio/background/blkio.group_idle 0
 
-on property:init.svc.vendor.charger=running
+on property:init.svc.charger=running
     chmod 0660 /dev/spm
     chown system system /dev/spm
     chmod 0666 /dev/kmsg

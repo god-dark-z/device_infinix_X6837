@@ -55,8 +55,10 @@
            be checked via NL80211 interface -->
     <bool name="config_wifi11axSupportOverride">true</bool>
 
-    <!-- Indicates that SAE Hash-to-Element is supported on this device -->
-    <bool name="config_wifiSaeH2eSupported">true</bool>
+    <!-- Indicates that SAE Hash-to-Element is supported on this device.
+         Disabled: MTK WMT driver has broken H2E path; use hunting-and-pecking instead.
+         See wpa_supplicant.conf sae_pwe=1. -->
+    <bool name="config_wifiSaeH2eSupported">false</bool>
 
     <!-- Wifi driver supports IEEE80211AX for softap -->
     <bool name="config_wifiSoftapIeee80211axSupported">true</bool>

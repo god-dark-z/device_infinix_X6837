@@ -19,6 +19,7 @@ PRODUCT_ENFORCE_SELINUX_TREBLE_LABELING := false
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
+$(call soong_config_set,update_engine,map_vabc_in_recovery,true)
 
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
@@ -222,6 +223,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery \
+    charger \
     charger_res_images_vendor
 
 # HIDL
@@ -525,9 +527,12 @@ PRODUCT_PACKAGES += \
     vndservice
     
 # Wi-Fi
-$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
+# Note: Do NOT set use_pre_u_qpr2_struct or use_pre_baklava_qpr0_struct.
+# Android 17 (Cinnamon) needs the full v3+v4 HAL struct. The SET_IF_NOT_NULL
+# macro safely handles any v4 functions the driver doesn't implement.
 PRODUCT_PACKAGES += \
-    libwifi-hal-wrapper \
+    libwifi-hal-wrapper:64 \
+    wlan_assistant \
     android.hardware.wifi-service \
     wpa_supplicant \
     hostapd \
@@ -535,9 +540,9 @@ PRODUCT_PACKAGES += \
     libkeystore-engine-wifi-hidl:64
     
 PRODUCT_PACKAGES += \
-    android.hardware.tetheroffload.config@1.0.vendor \
-    android.hardware.tetheroffload.control@1.0.vendor \
-    android.hardware.tetheroffload.control@1.1.vendor
+    android.hardware.tetheroffload.config@1.0.vendor:64 \
+    android.hardware.tetheroffload.control@1.0.vendor:64 \
+    android.hardware.tetheroffload.control@1.1.vendor:64
     
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
