@@ -19,7 +19,6 @@ PRODUCT_ENFORCE_SELINUX_TREBLE_LABELING := false
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
-$(call soong_config_set,update_engine,map_vabc_in_recovery,true)
 
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
@@ -55,7 +54,6 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     checkpoint_gc
 
-PRODUCT_VIRTUAL_AB_COMPRESSION := true
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 # Allow userspace reboots

@@ -84,11 +84,6 @@ on post-fs
 on post-fs-data
     wait_for_prop vendor.all.modules.ready 1
 
-    # Ensure /metadata/ota exists for update_engine snapshot state (VABC).
-    # If metadata was wiped, recovery sideload fails with kPostInstallMountError
-    # because the snapshot manager cannot find this directory.
-    mkdir /metadata/ota 0770 root root
-
     chown system system /mnt/vendor/nvcfg
     chmod 0771 /mnt/vendor/nvcfg
     restorecon_recursive /mnt/vendor/nvcfg
