@@ -55,6 +55,7 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     checkpoint_gc
 
+PRODUCT_VIRTUAL_AB_COMPRESSION := true
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 # Allow userspace reboots
